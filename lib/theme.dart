@@ -12,4 +12,4 @@ final buttonStyle = Material(
 const btnColor = Colors.indigo;
 const backgroundColor = Colors.black;
 const primaryAccentColor = Colors.blueAccent;
-const lightInputTextStyle = TextStyle(color: Colors.white, fontSize: 15);
+const lightInputTextStyle = TextStyle(color: Colors.black, fontSize: 15);

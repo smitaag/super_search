@@ -56,65 +56,56 @@ class _SearchHomeState extends State<SearchHome> {
                 MediaQuery.of(context).size.width * .04,
                 MediaQuery.of(context).size.width * .05,
                 MediaQuery.of(context).size.width * .04),
-            child: SingleChildScrollView(
-              child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //  padding: EdgeInsets.zero,
-                  children: <Widget>[
-                    Text(
-                      'Experience new way of looking for best candidates/jobs',
-                      style: TextStyle(
-                          color: Colors.blueGrey[800],
-                          fontFamily: 'AkkuratPro',
-                          fontSize: 17.0),
-                    ),
-                    Container(
-                        padding: const EdgeInsets.all(0),
-                        height: MediaQuery.of(context).size.height * .2,
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                TextFormField(
-                                  obscureText: false,
-                                  maxLines: 1,
-                                  minLines: 1,
-                                  style: lightInputTextStyle,
-                                  keyboardType: TextInputType.phone,
-                                  onSaved: (value) => _portal = value,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      _portal = value;
-                                    });
-                                  },
-                                ),
-                                TextFormField(
-                                  obscureText: false,
-                                  maxLines: 1,
-                                  minLines: 1,
-                                  style: lightInputTextStyle,
-                                  keyboardType: TextInputType.phone,
-                                  onSaved: (value) => _keyword = value,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      _keyword = value;
-                                    });
-                                  },
-                                )
-                              ],
-                            ),
-                            MaterialButton(
-                              child: const Text("Show Results"),
-                              onPressed: () {
-                                setState(() {
-                                  refreshUI = true;
-                                });
-                              },
-                            ),
-                            updateResults(),
-                          ],
-                        )),
-                  ]),
-            ),
+            child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //  padding: EdgeInsets.zero,
+                children: <Widget>[
+                  Text(
+                    'Experience new way of looking for best candidates/jobs',
+                    style: TextStyle(
+                        color: Colors.blueGrey[800],
+                        fontFamily: 'AkkuratPro',
+                        fontSize: 17.0),
+                  ),
+                  Row(
+                    children: [
+                      TextFormField(
+                        obscureText: false,
+                        maxLines: 1,
+                        minLines: 1,
+                        style: lightInputTextStyle,
+                        keyboardType: TextInputType.phone,
+                        onSaved: (value) => _portal = value,
+                        onChanged: (value) {
+                          setState(() {
+                            _portal = value;
+                          });
+                        },
+                      ),
+                      TextFormField(
+                        obscureText: false,
+                        maxLines: 1,
+                        minLines: 1,
+                        style: lightInputTextStyle,
+                        keyboardType: TextInputType.phone,
+                        onSaved: (value) => _keyword = value,
+                        onChanged: (value) {
+                          setState(() {
+                            _keyword = value;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                  MaterialButton(
+                    child: const Text("Show Results"),
+                    onPressed: () {
+                      setState(() {
+                        refreshUI = true;
+                      });
+                    },
+                  ),
+                  Expanded(child: updateResults()),
+                ]),
           ),
         ),
       ),
