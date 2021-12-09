@@ -105,14 +105,14 @@ class _SearchHomeState extends State<SearchHome> {
                               ],
                             ),
                             MaterialButton(
-                              child: Text("Show Results"),
+                              child: const Text("Show Results"),
                               onPressed: () {
                                 setState(() {
                                   refreshUI = true;
                                 });
                               },
                             ),
-                            (refreshUI) ? showSearchResults() : Container(),
+                            updateResults() ,
                           ],
                         )),
                   ]),
