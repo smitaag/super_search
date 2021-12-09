@@ -17,30 +17,28 @@ class _SearchHomeState extends State<SearchHome> {
   Widget updateResults() {
     return FutureBuilder(
       builder: (context, AsyncSnapshot searchSnap) {
-       
-    // WHILE THE CALL IS BEING MADE AKA LOADING
-    if (!searchSnap.hasData) {
-      return const Center(child: Text('Loading'));
-    }
+        // WHILE THE CALL IS BEING MADE AKA LOADING
+        if (!searchSnap.hasData) {
+          return const Center(child: Text('Loading'));
+        }
 
-    // WHEN THE CALL IS DONE BUT HAPPENS TO HAVE AN ERROR
-    if (searchSnap.hasError) {
-      return Center(child: Text(searchSnap.error.toString()));
-    }
+        // WHEN THE CALL IS DONE BUT HAPPENS TO HAVE AN ERROR
+        if (searchSnap.hasError) {
+          return Center(child: Text(searchSnap.error.toString()));
+        }
         return ListView.builder(
-          itemCount: searchSnap.data.length,
-          itemBuilder: (BuildContext context, int index) {
-                return Text('${searchSnap.data[index].title}');
-              }
-        );
+            itemCount: searchSnap.data.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Text('${searchSnap.data[index].title}');
+            });
       },
       future: getProjectDetails(),
     );
   }
 
   Future getProjectDetails() async {
-    var result =List<String>[];
-    return result;
+    var list = <String?>['foo', 'bar', 'baz'];
+    return list;
   }
 
   Future<void> showSearchResults() async {}
@@ -112,7 +110,7 @@ class _SearchHomeState extends State<SearchHome> {
                                 });
                               },
                             ),
-                            updateResults() ,
+                            updateResults(),
                           ],
                         )),
                   ]),
