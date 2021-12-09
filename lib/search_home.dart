@@ -16,26 +16,31 @@ class _SearchHomeState extends State<SearchHome> {
   List<String> _searchResults = [];
   Widget updateResults() {
     return FutureBuilder(
-      builder: (context, searchSnap) {
-        if (searchSnap.connectionState == ConnectionState.none &&
-            searchSnap.hasData == null) {
-          //print('project snapshot data is: ${projectSnap.data}');
-          return Container();
-        }
+      builder: (context, AsyncSnapshot searchSnap) {
+       
+    // WHILE THE CALL IS BEING MADE AKA LOADING
+    if (!searchSnap.hasData) {
+      return const Center(child: Text('Loading'));
+    }
+
+    // WHEN THE CALL IS DONE BUT HAPPENS TO HAVE AN ERROR
+    if (searchSnap.hasError) {
+      return Center(child: Text(searchSnap.error.toString()));
+    }
         return ListView.builder(
-          itemCount: searchSnap.data?.length,
-          itemBuilder: (context, index) {
-            ProjectModel project = projectSnap.data[index];
-            return Column(
-              children: <Widget>[
-                // Widget to display the list of project
-              ],
-            );
-          },
+          itemCount: searchSnap.data.length,
+          itemBuilder: (BuildContext context, int index) {
+                return Text('${searchSnap.data[index].title}');
+              }
         );
       },
       future: getProjectDetails(),
     );
+  }
+
+  Future getProjectDetails() async {
+    var result =List<String>[];
+    return result;
   }
 
   Future<void> showSearchResults() async {}
