@@ -4,47 +4,26 @@ import 'package:super_search/search_home.dart';
 void main() => runApp(SignUpApp());
 
 class SignUpApp extends StatelessWidget {
+  const SignUpApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        '/': (context) => SignUpScreen(),
+        '/': (context) => const SignUpScreen(),
       },
     );
   }
 }
 
 class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
-      body: Center(
-        child: SizedBox(
-          width: 400,
-          child: Card(
-            child: SignUpForm(),
-          ),
-        ),
-      ),
+      backgroundColor: Colors.deepPurple[900],
+      body: const Center(child: SearchHome()),
     );
-  }
-}
-
-class SignUpForm extends StatefulWidget {
-  @override
-  _SignUpFormState createState() => _SignUpFormState();
-}
-
-class _SignUpFormState extends State<SignUpForm> {
-  final _firstNameTextController = TextEditingController();
-  final _lastNameTextController = TextEditingController();
-  final _usernameTextController = TextEditingController();
-
-  double _formProgress = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return const SearchHome();
   }
 }
